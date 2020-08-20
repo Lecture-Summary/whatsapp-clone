@@ -28,7 +28,7 @@ function Login() {
           alt=""
         />
         <div className="login__text">
-          <h1>Sign in to WhatsApp</h1>
+          <h1>WhatsApp에 로그인</h1>
         </div>
 
         <Button type="submit" onClick={signIn}>

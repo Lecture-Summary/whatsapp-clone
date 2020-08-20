@@ -18,14 +18,14 @@ function SidebarChat({ id, name, addNewChat }) {
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
   const createChat = () => {
-    const roomName = prompt("Please enter name for chat room");
+    const roomName = prompt("채팅방 이름을 입력해주세요.");
 
     if (roomName) {
       db.collection("rooms").add({
@@ -36,7 +36,6 @@ function SidebarChat({ id, name, addNewChat }) {
 
   return !addNewChat ? (
     <Link to={`/rooms/${id}`}>
-      {console.log(messages[0])}
       <div className="sidebarChat">
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         <div className="sidebarChat__info">
@@ -47,7 +46,7 @@ function SidebarChat({ id, name, addNewChat }) {
     </Link>
   ) : (
     <div onClick={createChat} className="sidebarChat">
-      <h2>Add new Chat</h2>
+      <h2>채팅방 생성</h2>
     </div>
   );
 }

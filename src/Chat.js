@@ -41,7 +41,6 @@ function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    console.log("You typed >>> ", input);
 
     db.collection("rooms").doc(roomId).collection("messages").add({
       message: input,
@@ -60,7 +59,7 @@ function Chat() {
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
           <p>
-            last seen{" "}
+            최근 본 날짜{" "}
             {new Date(
               messages[messages.length - 1]?.timestamp?.toDate()
             ).toUTCString()}
@@ -103,7 +102,7 @@ function Chat() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type a message"
+            placeholder="메시지를 입력하세요"
             type="text"
           />
           <button onClick={sendMessage} type="submit">
